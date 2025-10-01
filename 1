@@ -1,3 +1,16 @@
 SELECT SUM(CITY.population)
  FROM CITY JOIN COUNTRY ON CITY.CountryCode = COUNTRY.Code 
  WHERE COUNTRY.Continent ='Asia' 
+
+
+
+CREATE TABLE IF NOT EXISTS rest_4 AS
+(SELECT new_id, new_name, clean_city, rating, rating_count,
+        clean_cuisine, cost
+ FROM rest_3
+ WHERE clean_cuisine NOT IN ('combo', 'na', 'discount offer from garden cafe express kankurgachi', 
+                            'svanidhi street food vendor', 'tex-mex',
+                            'special discount from (hotel swagath)',
+                            'free delivery ! limited stocks!'));
+
+SELECT * FROM rest_4;
