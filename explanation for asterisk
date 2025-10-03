@@ -1,0 +1,52 @@
+🔎 Explanation
+1. DELIMITER ##
+
+By default, MySQL uses ; as the command terminator.
+But inside a stored procedure, we also use ;.
+So we temporarily change the delimiter to ## (or $$, any custom symbol).
+This tells MySQL not to end the procedure definition when it sees ;.
+
+2. CREATE PROCEDURE pattern_print()
+
+Defines a stored procedure named pattern_print that takes no parameters.
+
+3. DECLARE i INT DEFAULT 20;
+
+Declares a local variable i of type INT.
+
+Initializes it with 20.
+
+This means we are going to print 20 lines of pattern.
+
+4. WHILE i > 0 DO ... END WHILE;
+
+A loop that keeps running until i becomes 0.
+
+Each loop iteration prints one line of stars.
+
+5. SELECT IF(i = 1, "*", REPEAT("* ", i));
+
+REPEAT(str, count) repeats a string multiple times.
+Example: REPEAT("* ", 5) → * * * * *
+
+IF(condition, true_value, false_value) chooses between two values.
+
+If i = 1, just print "*" (avoid extra space).
+
+Otherwise, print "* " repeated i times.
+
+So, for each i, a row of stars gets printed.
+
+6. SET i = i - 1;
+
+Reduces the value of i by 1 after each iteration.
+
+7. END## and DELIMITER ;
+
+Marks the end of the procedure definition.
+
+Restores the delimiter back to normal ;.
+
+8. CALL pattern_print();
+
+Runs the procedure.
